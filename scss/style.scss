@@ -1,5 +1,133 @@
 @import '_normalize';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-// === Common ===
-// === Common ===
+// == Common ==
 
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	color: #eee;
+
+	background-color: #222;
+}
+
+.container {
+	max-width: 940px;
+	margin: 0 auto;
+}
+
+// == Header ==
+
+.header {
+	padding: 20px 0;
+	border-bottom: 1px solid #eee;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+// == Nav ==
+
+.nav {
+
+	&__list {
+		display: flex;
+		align-items: center;
+	}
+
+	&__item {
+
+		&:not(:last-child) {
+			margin-right: 30px;
+		}
+	}
+
+	&__link {}
+}
+
+
+// == Burger ==
+
+.burger {
+	// display: none;
+	position: relative;
+	width: 30px;
+	height: 20px;
+	
+
+	&__line {
+		width: 100%;
+		height: 2px;
+
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+
+		border-radius: 2px;
+
+		background-color: #eee;
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		width: 100%;
+		height: 2px;
+
+		position: absolute;
+
+		left: 0;
+
+		border-radius: 2px;
+
+		background-color: #eee;
+	}
+
+	&::before {
+		top: 0;
+	}
+
+	&::after {
+		bottom: 0;
+	}
+}
+
+@media (max-width: 1024px) {
+	.burger {
+		display: block;
+	}
+
+	.nav {
+		position: fixed;
+		right: 0;
+		top: 0;
+
+		padding: 30px;
+
+		background-color: #222;
+
+		z-index: 1000;
+
+		&__list {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		&__item {
+
+			&:not(:last-child) {
+				margin-right: 0;
+				margin-bottom: 30px;
+			}
+		}
+
+		&__link {
+			font-size: 30px;
+		}
+	}
+}
