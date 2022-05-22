@@ -107,6 +107,11 @@ body {
   margin: 0 auto;
 }
 
+.page__body {
+  min-height: 2000px;
+  overflow-x: hidden;
+}
+
 .header {
   padding: 20px 0;
   border-bottom: 1px solid #eee;
@@ -180,10 +185,22 @@ body {
   .nav {
     position: fixed;
     right: 0;
-    top: 0;
+    top: 61px;
+    width: 60%;
+    max-width: 260px;
     padding: 30px;
     background-color: #222;
     z-index: 1000;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    transition: -webkit-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+  }
+  .nav--visible {
+    -webkit-transform: none;
+            transform: none;
   }
   .nav__list {
     -webkit-box-orient: vertical;
@@ -194,11 +211,17 @@ body {
         -ms-flex-align: start;
             align-items: flex-start;
   }
+  .nav__item {
+    width: 100%;
+  }
   .nav__item:not(:last-child) {
     margin-right: 0;
-    margin-bottom: 30px;
   }
   .nav__link {
     font-size: 30px;
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
   }
 }
