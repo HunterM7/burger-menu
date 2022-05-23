@@ -102,6 +102,10 @@ body {
   background-color: #222;
 }
 
+.stop-scroll {
+  overflow: hidden;
+}
+
 .container {
   max-width: 940px;
   margin: 0 auto;
@@ -158,16 +162,21 @@ body {
           transform: translateY(-50%);
   border-radius: 2px;
   background-color: #eee;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .burger::before, .burger::after {
   content: '';
   width: 100%;
   height: 2px;
+  display: block;
   position: absolute;
   left: 0;
   border-radius: 2px;
   background-color: #eee;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .burger::before {
@@ -178,16 +187,35 @@ body {
   bottom: 0;
 }
 
+.burger--active .burger__line {
+  opacity: 0;
+}
+
+.burger--active::before {
+  top: 50%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.burger--active::after {
+  top: 50%;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 @media (max-width: 1024px) {
   .burger {
     display: block;
   }
   .nav {
+    --header-height: 61px;
     position: fixed;
     right: 0;
-    top: 61px;
+    top: var(--header-height);
     width: 60%;
-    max-width: 260px;
+    max-width: 300px;
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
     padding: 30px;
     background-color: #222;
     z-index: 1000;
